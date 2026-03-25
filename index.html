@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Warriors Fitness Club | Strength & Discipline</title>
+  <!-- Google Fonts + simple reset & modern styling -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fefcf5;
+      color: #1e1a15;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* container utility */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* header / nav */
+    .navbar {
+      background: #0b0a08;
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 1rem 24px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .logo h1 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #f5b042, #e03a3a);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .logo span {
+      font-size: 0.8rem;
+      display: block;
+      color: #b9b3a6;
+      font-weight: 400;
+      letter-spacing: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .nav-links a {
+      color: #f0ede8;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+      font-size: 1rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #f5b042;
+    }
+
+    /* hero section */
+    .hero {
+      background: linear-gradient(107deg, #14100c 0%, #2a241e 100%);
+      color: white;
+      padding: 3.5rem 0 4rem;
+      border-bottom: 5px solid #f5b042;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+
+    .hero-text h2 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      margin-bottom: 1.8rem;
+      color: #e0d6cc;
+      max-width: 550px;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #f5b042;
+      color: #1e1a15;
+      font-weight: 700;
+      padding: 0.8rem 1.8rem;
+      border-radius: 40px;
+      text-decoration: none;
+      transition: 0.2s;
+      border: none;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #f5b042;
+      color: #f5b042;
+    }
+
+    .btn-outline:hover {
+      background: #f5b042;
+      color: #1e1a15;
+    }
+
+    .btn:hover {
+      background: #e09d2c;
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 1.5rem;
+      border-radius: 32px;
+      backdrop-filter: blur(8px);
+      text-align: center;
+    }
+
+    .hero-stats i {
+      font-size: 2.2rem;
+      color: #f5b042;
+    }
+
+    /* general sections */
+    section {
+      padding: 4rem 0;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 70%;
+      height: 4px;
+      background: #f5b042;
+      border-radius: 4px;
+    }
+
+    /* features / info cards */
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .feature-card {
+      background: white;
+      border-radius: 28px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.05);
+      transition: 0.2s;
+      text-align: center;
+      border: 1px solid #eee7df;
+    }
+
+    .feature-card i {
+      font-size: 2.6rem;
+      color: #e03a3a;
+      margin-bottom: 1rem;
+    }
+
+    .contact-info {
+      background: #fff8f0;
+      border-radius: 32px;
+      padding: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+      margin: 1rem 0;
+    }
+
+    .contact-detail {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .contact-detail i {
+      font-size: 2rem;
+      color: #f5b042;
+    }
+
+    /* cards for pages (privacy, terms, contact page) */
+    .legal-card {
+      background: white;
+      border-radius: 32px;
+      padding: 2rem 2rem;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
+      border: 1px solid #e9e2d8;
+      margin-bottom: 1rem;
+    }
+
+    .legal-card h3 {
+      font-size: 1.6rem;
+      margin: 1.5rem 0 1rem;
+      color: #e03a3a;
+    }
+
+    .legal-card h3:first-of-type {
+      margin-top: 0;
+    }
+
+    .legal-card p, .legal-card li {
+      margin-bottom: 0.8rem;
+      color: #2c2823;
+    }
+
+    .contact-page-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      max-width: 650px;
+    }
+
+    input, textarea {
+      padding: 1rem;
+      border-radius: 28px;
+      border: 1px solid #ddd2c4;
+      font-family: inherit;
+      font-size: 1rem;
+      background: #fffdf9;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 110px;
+    }
+
+    footer {
+      background: #0b0a08;
+      color: #b9b3a6;
+      padding: 2rem 0;
+      text-align: center;
+      border-top: 1px solid #2e2821;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links a {
+      color: #e0cfbc;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .footer-links a:hover {
+      color: #f5b042;
+    }
+
+    .copyright {
+      font-size: 0.85rem;
+    }
+
+    .active-page {
+      background: #f5b04220;
+      border-radius: 20px;
+    }
+
+    @media (max-width: 780px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .hero-text h2 {
+        font-size: 2.2rem;
+      }
+      .section-title {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+  <div class="nav-container">
+    <div class="logo">
+      <h1>⚔️ WARRIORS <span>FITNESS CLUB</span></h1>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#" data-page="home">HOME</a></li>
+      <li><a href="#" data-page="privacy">PRIVACY POLICY</a></li>
+      <li><a href="#" data-page="terms">TERMS & CONDITIONS</a></li>
+      <li><a href="#" data-page="contact">CONTACT</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- DYNAMIC CONTENT WRAPPER -->
+<main id="app-root">
+  <!-- content will be injected here via JS -->
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-links">
+      <a href="#" data-page="privacy">Privacy Policy</a>
+      <a href="#" data-page="terms">Terms of Use</a>
+      <a href="#" data-page="contact">Contact Us</a>
+    </div>
+    <div class="copyright">
+      &copy; <span id="currentYear"></span> WARRIORS FITNESS CLUB. All rights reserved. | Radhanagari Complex, Pabal Road, Chavan Mala, Holewadi, Khed, Pune 410505
+    </div>
+  </div>
+</footer>
+
+<script>
+  // DOM elements
+  const appRoot = document.getElementById('app-root');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const footerNavLinks = document.querySelectorAll('.footer-links a');
+  
+  // Helper: update active class in navigation
+  function setActiveNav(pageId) {
+    const allNavAnchors = document.querySelectorAll('.nav-links a');
+    allNavAnchors.forEach(link => {
+      const linkPage = link.getAttribute('data-page');
+      if (linkPage === pageId) {
+        link.classList.add('active');
+        link.style.color = '#f5b042';
+      } else {
+        link.classList.remove('active');
+        link.style.color = '';
+      }
+    });
+  }
+
+  // ---------- PAGE COMPONENTS (HTML) ----------
+  
+  // HOME PAGE (main info + club details, contact snippets)
+  function renderHome() {
+    return `
+      <section class="hero">
+        <div class="container hero-content">
+          <div class="hero-text">
+            <h2>Unleash Your Inner <br><span style="color:#f5b042;">Warrior</span></h2>
+            <p>Elite coaching, premium equipment, and a community that pushes you beyond limits. Start your transformation today.</p>
+            <div class="btn-group">
+              <a href="#" data-page="contact" class="btn">Join Now →</a>
+              <a href="#" data-page="contact" class="btn btn-outline">Get in Touch</a>
+            </div>
+          </div>
+          <div class="hero-stats">
+            <i class="fas fa-dumbbell"></i>
+            <p style="font-weight:bold; margin-top:0.5rem;">Functional Fitness • MMA • Strength</p>
+            <p>📍 Khed, Pune</p>
+          </div>
+        </div>
+      </section>
+      
+      <section class="container">
+        <h2 class="section-title">Why Warriors Club?</h2>
+        <div class="features-grid">
+          <div class="feature-card"><i class="fas fa-users"></i><h3>Expert Trainers</h3><p>Certified coaches with years of experience in strength & conditioning.</p></div>
+          <div class="feature-card"><i class="fas fa-heartbeat"></i><h3>Holistic Approach</h3><p>Nutrition guidance, recovery, and personalized workout plans.</p></div>
+          <div class="feature-card"><i class="fas fa-clock"></i><h3>Flexible Hours</h3><p>Open early morning to late night, fit any schedule.</p></div>
+          <div class="feature-card"><i class="fas fa-trophy"></i><h3>Competition Prep</h3><p>Specialized programs for athletes & fitness enthusiasts.</p></div>
+        </div>
+      </section>
+      
+      <section class="container" style="background:#fff5ec; border-radius: 48px; margin-bottom: 2rem; padding: 2rem;">
+        <h2 class="section-title">📍 Visit Us</h2>
+        <div class="contact-info">
+          <div class="contact-detail"><i class="fas fa-phone-alt"></i> <span><strong>Call us</strong><br>8055981910</span></div>
+          <div class="contact-detail"><i class="fas fa-envelope"></i> <span><strong>Email</strong><br>helpdesk@stargp.in</span></div>
+          <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> <span><strong>Address</strong><br>Radhanagari Complex, Pabal Road, Chavan Mala, Holewadi, Khed, Pune 410505</span></div>
+        </div>
+        <div style="margin-top: 1rem;"><a href="#" data-page="contact" class="btn">Full Contact Page →</a></div>
+      </section>
+    `;
+  }
+
+  // PRIVACY POLICY PAGE
+  function renderPrivacy() {
+    return `
+      <div class="container" style="padding: 2rem 0 4rem;">
+        <div class="legal-card">
+          <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Privacy Policy</h1>
+          <p style="color: #6b6258; margin-bottom: 1.8rem;">Last updated: March 2025</p>
+          <p>At Warriors Fitness Club, we value your privacy and are committed to protecting your personal data. This policy outlines how we collect, use, and safeguard information when you visit our facility or website.</p>
+          
+          <h3>1. Information We Collect</h3>
+          <p>We may collect personal details such as name, email address, phone number, fitness goals, and payment information when you register for memberships, classes, or contact us.</p>
+          
+          <h3>2. How We Use Your Information</h3>
+          <p>To process memberships, provide personalized training plans, communicate updates, and improve our services. We never sell your data to third parties.</p>
+          
+          <h3>3. Data Security</h3>
+          <p>We implement strict security measures to protect against unauthorized access, alteration, or destruction of your personal data.</p>
+          
+          <h3>4. Cookies & Tracking</h3>
+          <p>Our website uses cookies to enhance user experience. You can modify browser settings to decline cookies if preferred.</p>
+          
+          <h3>5. Your Rights</h3>
+          <p>You may request access, correction, or deletion of your personal data by contacting us at helpdesk@stargp.in or calling 8055981910.</p>
+          
+          <h3>6. Updates to Policy</h3>
+          <p>We may update this Privacy Policy occasionally; any changes will be posted on this page.</p>
+          <p style="margin-top: 1.5rem;"><i class="fas fa-shield-alt"></i> Warriors Fitness Club – Strength with integrity.</p>
+        </div>
+      </div>
+    `;
+  }
+
+  // TERMS & CONDITIONS PAGE
+  function renderTerms() {
+    return `
+      <div class="container" style="padding: 2rem 0 4rem;">
+        <div class="legal-card">
+          <h1 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Terms & Conditions</h1>
+          <p style="color: #6b6258; margin-bottom: 1.8rem;">Effective from March 2025</p>
+          <p>By becoming a member or using the services of Warriors Fitness Club, you agree to abide by the following terms.</p>
+          
+          <h3>1. Membership & Fees</h3>
+          <p>Membership fees are non-refundable except as required by law. Payments must be made on time to maintain access. Any changes to membership type require prior notice.</p>
+          
+          <h3>2. Code of Conduct</h3>
+          <p>All members must respect staff, fellow members, and equipment. Any unsafe or disrespectful behavior may result in membership termination without refund.</p>
+          
+          <h3>3. Liability Waiver</h3>
+          <p>Physical exercise involves inherent risks. By using our facilities, you acknowledge that you are physically fit and voluntarily assume all risks associated with training. Warriors Fitness Club is not liable for injuries arising from negligence or improper use of equipment.</p>
+          
+          <h3>4. Gym Rules</h3>
+          <p>Proper athletic attire required. Re-rack weights, clean equipment after use, and follow trainer instructions. Guests must be accompanied by a member.</p>
+          
+          <h3>5. Cancellation & Freeze</h3>
+          <p>Membership freeze requests must be submitted at least 7 days in advance. Refunds are not provided for early cancellations unless required by applicable consumer law.</p>
+          
+          <h3>6. Changes to Terms</h3>
+          <p>We reserve the right to modify these terms with notice. Continued membership implies acceptance.</p>
+          <p style="margin-top: 1rem;"><strong>Contact:</strong> For any dispute, reach out to helpdesk@stargp.in or 8055981910.</p>
+        </div>
+      </div>
+    `;
+  }
+
+  // CONTACT PAGE (full contact details, form + map placeholder)
+  function renderContact() {
+    return `
+      <div class="container" style="padding: 2rem 0 3rem;">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;" class="contact-grid-responsive">
+          <div class="legal-card" style="height: fit-content;">
+            <h2><i class="fas fa-address-card"></i> Get in Touch</h2>
+            <div style="margin: 1.8rem 0;">
+              <div class="contact-detail" style="margin-bottom: 1.4rem;"><i class="fas fa-phone-alt"></i> <div><strong>Phone / WhatsApp</strong><br>8055981910</div></div>
+              <div class="contact-detail" style="margin-bottom: 1.4rem;"><i class="fas fa-envelope"></i> <div><strong>Email</strong><br>helpdesk@stargp.in</div></div>
+              <div class="contact-detail" style="margin-bottom: 1.4rem;"><i class="fas fa-map-pin"></i> <div><strong>Studio Address</strong><br>Radhanagari Complex, Pabal Road,<br>Chavan Mala, Holewadi, Khed, Pune 410505</div></div>
+              <div class="contact-detail"><i class="fas fa-clock"></i> <div><strong>Opening Hours</strong><br>Mon-Sat: 6:00 AM – 10:00 PM<br>Sunday: 7:00 AM – 2:00 PM</div></div>
+            </div>
+          </div>
+          <div class="legal-card">
+            <h3><i class="fas fa-paper-plane"></i> Send a Quick Message</h3>
+            <form id="contactForm" class="contact-page-form">
+              <input type="text" id="nameInput" placeholder="Full Name" required>
+              <input type="email" id="emailInput" placeholder="Email Address" required>
+              <input type="tel" id="phoneInput" placeholder="Phone (optional)">
+              <textarea id="msgInput" placeholder="Tell us your fitness goals or query..."></textarea>
+              <button type="submit" class="btn" style="background:#e03a3a; color:white; border:none;">Send Message <i class="fas fa-arrow-right"></i></button>
+              <p id="formFeedback" style="font-size:0.85rem; color:green;"></p>
+            </form>
+            <p style="margin-top: 1rem; font-size: 0.8rem;">We’ll reply within 24 hours. Or just call us!</p>
+          </div>
+        </div>
+        <div class="legal-card" style="margin-top: 1.5rem; text-align: center;">
+          <i class="fas fa-location-dot" style="font-size: 2rem; color:#e03a3a;"></i>
+          <p style="margin-top: 0.5rem;"><strong>Radhanagari Complex, Pabal Road, Chavan Mala, Holewadi, Khed, Pune 410505</strong></p>
+          <div style="background:#eae2d7; height: 160px; border-radius: 28px; display: flex; align-items: center; justify-content: center; margin-top: 1rem;">
+            <span><i class="fas fa-map-marked-alt"></i> 📍 Find us near Khed City – landmark: Radhanagari Complex main gate</span>
+          </div>
+        </div>
+      </div>
+    `;
+  }
+
+  // handle contact form submission (dummy alert with simulation)
+  function attachContactFormHandler() {
+    const form = document.getElementById('contactForm');
+    if (form) {
+      // remove any previous listener to avoid duplicates
+      form.removeEventListener('submit', handleFormSubmit);
+      form.addEventListener('submit', handleFormSubmit);
+    }
+  }
+
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('nameInput')?.value.trim() || '';
+    const email = document.getElementById('emailInput')?.value.trim() || '';
+    const msg = document.getElementById('msgInput')?.value.trim() || '';
+    if (!name || !email) {
+      const feedback = document.getElementById('formFeedback');
+      if(feedback) feedback.innerText = '⚠️ Please provide name and email.';
+      return;
+    }
+    // simple simulation
+    const feedbackSpan = document.getElementById('formFeedback');
+    if(feedbackSpan) {
+      feedbackSpan.innerHTML = `✅ Thanks ${name}, we've received your inquiry! A warrior coach will contact you soon.`;
+      feedbackSpan.style.color = "#2c7a47";
+    }
+    // optionally reset but keep data visible
+    document.getElementById('contactForm')?.reset();
+    setTimeout(() => {
+      if(feedbackSpan) feedbackSpan.innerText = '';
+    }, 4000);
+  }
+
+  // Page router
+  let currentPage = 'home';
+  
+  function loadPage(page) {
+    currentPage = page;
+    let pageHtml = '';
+    switch(page) {
+      case 'home':
+        pageHtml = renderHome();
+        break;
+      case 'privacy':
+        pageHtml = renderPrivacy();
+        break;
+      case 'terms':
+        pageHtml = renderTerms();
+        break;
+      case 'contact':
+        pageHtml = renderContact();
+        break;
+      default:
+        pageHtml = renderHome();
+        currentPage = 'home';
+    }
+    appRoot.innerHTML = pageHtml;
+    setActiveNav(currentPage);
+    
+    // attach any special handlers after rendering
+    if (currentPage === 'contact') {
+      attachContactFormHandler();
+    }
+    
+    // reattach any internal navigation links that are inside dynamic content (buttons "Join Now" etc)
+    const internalNavLinks = document.querySelectorAll('[data-page]');
+    internalNavLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetPage = link.getAttribute('data-page');
+        if(targetPage && (targetPage === 'home' || targetPage === 'privacy' || targetPage === 'terms' || targetPage === 'contact')) {
+          loadPage(targetPage);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+  }
+  
+  // event listeners for top navigation and footer nav
+  function bindGlobalNav() {
+    const allPageTriggers = [...navLinks, ...footerNavLinks];
+    allPageTriggers.forEach(trigger => {
+      trigger.addEventListener('click', (e) => {
+        e.preventDefault();
+        const page = trigger.getAttribute('data-page');
+        if (page && (page === 'home' || page === 'privacy' || page === 'terms' || page === 'contact')) {
+          loadPage(page);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    });
+  }
+  
+  // initial load + year
+  function setCopyrightYear() {
+    document.getElementById('currentYear').innerText = new Date().getFullYear();
+  }
+  
+  // responsive grid adjustments
+  function addMobileStyle() {
+    const style = document.createElement('style');
+    style.textContent = `@media (max-width: 780px) { .contact-grid-responsive { grid-template-columns: 1fr !important; } }`;
+    document.head.appendChild(style);
+  }
+  
+  // initialize
+  function init() {
+    setCopyrightYear();
+    bindGlobalNav();
+    addMobileStyle();
+    loadPage('home'); // default home
+  }
+  
+  init();
+</script>
+</body>
+</html>
